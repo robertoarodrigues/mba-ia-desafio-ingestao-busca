@@ -1,3 +1,9 @@
+from dotenv import load_dotenv
+
+from langchain_core.prompts import PromptTemplate
+
+load_dotenv()
+
 PROMPT_TEMPLATE = """
 CONTEXTO:
 {contexto}
@@ -25,5 +31,8 @@ PERGUNTA DO USUÁRIO:
 RESPONDA A "PERGUNTA DO USUÁRIO"
 """
 
-def search_prompt(question=None):
-    pass
+def search_prompt():
+	return PromptTemplate(
+		template=PROMPT_TEMPLATE,
+		input_variables=["contexto", "pergunta"]
+	)

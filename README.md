@@ -1,13 +1,14 @@
-# Desafio MBA Engenharia de Software com IA - Full Cycle
+# Desafio MBA Engenharia de Software com IA – Full Cycle
 
 
-# Projeto RAG Chat PDF
+## 📌 Projeto: RAG Chat PDF
 
-Este projeto permite realizar consultas a documentos PDF utilizando um banco de dados vetorial e um chat interativo.  
+Este projeto implementa uma solução de Retrieval-Augmented Generation (RAG) para consulta de documentos em formato PDF, utilizando um banco de dados vetorial e uma interface de chat interativo.
+O objetivo é permitir a busca contextualizada em documentos, combinando processamento de linguagem natural com armazenamento vetorial.  
 
 ---
 
-## 1. Pré-requisitos
+## 🚀 Pré-requisitos
 
 Antes de executar o projeto, certifique-se de ter instalado:
 
@@ -16,49 +17,65 @@ Antes de executar o projeto, certifique-se de ter instalado:
 
 ---
 
-## 2. Instalação das dependências
+## ⚙️ Instalação das dependências
 
 Na raiz do projeto, execute os comandos abaixo:
 
 ```
 python3 -m venv venv
-source venv/bin/activate
+source venv/bin/activate   # Linux / MacOS
+venv\Scripts\activate      # Windows PowerShell
 pip install -r requirements.txt
-```
-
-## 3. Configuração do ambiente
-
-Crie um arquivo `.env` na raiz do projeto com as variáveis de ambiente necessárias (exemplo: chaves de API, configurações de banco de dados, etc).
 
 ```
+
+## 🔧 Configuração do ambiente
+
+Crie um arquivo .env na raiz do projeto com as variáveis de ambiente necessárias.
+Exemplo:
+
+```
+# Chave da API Gemini
 GEMINI_API_KEY=CHANGE_ME
+
+# Configuração do banco de dados
 DATABASE_URL=postgresql+psycopg://postgres:postgres@localhost:5434/rag
 PG_VECTOR_COLLECTION_NAME=desafio01
+
+# Documento de entrada
 PDF_PATH=document.pdf
+
 ```
+⚠️ Importante: ajuste os valores conforme o seu ambiente.
 
-## 4. Ordem de execução
+## ▶️ Execução do projeto
 
-1. Suba o banco de dados vetorial utilizando o Docker Compose:
+1. Subir o banco de dados vetorial com Docker Compose:
 
 	```
 	docker compose up -d
 	```
 
-2. Execute a ingestão do PDF:
+2. Ingestão do PDF no banco vetorial:
 
 	```
 	python src/ingest.py
 	```
 
-3. Rode o chat:
+3. Iniciar o chat interativo:
 
 	```
 	python src/chat.py
 	```
 
-Siga as instruções exibidas no terminal para interagir com o chat.
+Após iniciar o chat, siga as instruções exibidas no terminal para realizar consultas ao documento.
 
 ---
 
-IMPORTANTE! Adapte as variáveis de ambiente e configurações conforme necessário para o seu ambiente.
+## 📖 Observações
+
+Certifique-se de que o Docker esteja em execução antes de iniciar o banco.
+
+- O arquivo .env deve conter credenciais válidas (ex.: chave da API e configurações do banco).
+
+- Caso deseje utilizar outro documento, altere o valor da variável PDF_PATH.
